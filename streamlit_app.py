@@ -9,15 +9,19 @@ import warnings
 from crewai import Agent, Task, Crew, Process
 from crewai_tools import ScrapeWebsiteTool, SerperDevTool
 from langchain_openai import ChatOpenAI
-from utils import get_openai_api_key, get_serper_api_key
+#from utils import get_openai_api_key, get_serper_api_key
 
 # Suppress warnings
 warnings.filterwarnings('ignore')
 
+
+openai_api_key = st.text_input("OpenAI API Key", type="password")
+
 # Load API keys
-openai_api_key = get_openai_api_key()
+#openai_api_key = get_openai_api_key()
 os.environ["OPENAI_MODEL_NAME"] = "gpt-3.5-turbo"
-os.environ["SERPER_API_KEY"] = get_serper_api_key()
+#os.environ["SERPER_API_KEY"] = get_serper_api_key()
+os.environ["SERPER_API_KEY"] = st.text_input("Serper API Key", type="password")
 
 # Initialize tools
 search_tool = SerperDevTool()
